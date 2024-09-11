@@ -1,0 +1,44 @@
+<% content_for :title, "New movie" %>
+
+<h1>New movie</h1>
+
+<style>
+  .form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+
+  .form-container h1 {
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .back-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+
+  .back-link:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="form-container">
+  <%= form_with(model: @movie, local: true, url: movies_path(sort: params[:sort], direction: params[:direction])) do |form| %>
+    <%= render "form", movie: @movie %>
+    <%= form.submit "Don't click me" %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "Back to movies", movies_path(sort: params[:sort], direction: params[:direction]), class: "back-link" %>
+</div>

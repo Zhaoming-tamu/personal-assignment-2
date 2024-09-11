@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @movie %>
+
+<style>
+  .movie-actions {
+    margin-top: 20px;
+  }
+
+  .movie-actions a, .movie-actions button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .movie-actions a:hover, .movie-actions button:hover {
+    background-color: #c82333;
+  }
+</style>
+
+<div class="movie-actions">
+  <%= link_to "Edit this movie", edit_movie_path(@movie, sort: params[:sort], direction: params[:direction]) %>
+  <%= link_to "Back to movies", movies_path(sort: params[:sort], direction: params[:direction]) %>
+  <%= button_to "Destroy this movie", @movie, method: :delete %>
+</div>

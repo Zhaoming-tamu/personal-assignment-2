@@ -1,0 +1,48 @@
+<% content_for :title, "Editing movie" %>
+
+<h1>Editing movie</h1>
+
+<style>
+  .form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+
+  .form-container h1 {
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .action-links {
+    margin-top: 20px;
+  }
+
+  .action-links a {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+  .action-links a:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="form-container">
+  <%= form_with(model: @movie, local: true, url: movie_path(@movie, sort: params[:sort], direction: params[:direction])) do |form| %>
+    <%= render "form", movie: @movie %>
+    <%= form.submit "Don't click me" %>
+  <% end %>
+</div>
+
+<div class="action-links">
+  <%= link_to "Show this movie", movie_path(@movie, sort: params[:sort], direction: params[:direction]) %>
+  <%= link_to "Back to movies", movies_path(sort: params[:sort], direction: params[:direction]) %>
+</div>
